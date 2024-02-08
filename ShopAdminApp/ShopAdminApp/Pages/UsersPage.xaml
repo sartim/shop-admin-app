@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
+			 x:Class="ShopAdminApp.UsersPage"
+			 Title="Users">
+	<ContentPage.Content>
+		<StackLayout>
+            <SearchBar Placeholder="Search" />
+	        <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsSource>
+                    <col:ArrayList>
+                        <models:User Name="John Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                        <models:User Name="Jane Doe"/>
+                    </col:ArrayList>
+                </ListView.ItemsSource>
+            </ListView>
+          </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
