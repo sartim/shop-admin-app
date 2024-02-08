@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace ShopAdminApp.Services
 {
@@ -24,6 +25,15 @@ namespace ShopAdminApp.Services
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             HttpResponseMessage response = await client.PostAsync("api/v1/auth/generate-jwt", content);
+            try
+            {
+                await SecureStorage.SetAsync("jwt", response.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+                Console.WriteLine("Possible that device doesn't support secure storage on device.");
+            }
             Console.WriteLine(response);
             return response.IsSuccessStatusCode;
         }
