@@ -1,11 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
 			 x:Class="ShopAdminApp.OrdersPage"
-			 Title="Orders Page">
+			 Title="Orders">
 	<ContentPage.Content>
 		<StackLayout>
-			<Label Text="OrdersPage data goes here" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-		</StackLayout>
-	</ContentPage.Content>
+            <SearchBar Placeholder="Search" />
+	        <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding ID}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsSource>
+                    <col:ArrayList>
+                        <models:Order ID="#131411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                        <models:Order ID="#151411"/>
+                    </col:ArrayList>
+                </ListView.ItemsSource>
+            </ListView>
+          </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
