@@ -4,14 +4,14 @@
              xmlns:local="clr-namespace:ShopAdminApp;assembly=ShopAdminApp"
              x:Class="ShopAdminApp.HomePage"
              Title="SHOP ADMIN"
-             NavigationPage.HasBackButton="false">
+             NavigationPage.HasNavigationBar="false">
     <FlyoutPage.Flyout>
         <local:FlyoutMenuPage x:Name="flyoutPage" />
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <local:OrdersPage />
+                <local:DashboardPage />
             </x:Arguments>
         </NavigationPage>
     </FlyoutPage.Detail>
