@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopAdminApp.LoginPage"
+             NavigationPage.HasNavigationBar="false"
              BackgroundColor="DeepSkyBlue">
     <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
         <Entry Placeholder="Email" x:Name="EmailEntry" Keyboard="Email" />
