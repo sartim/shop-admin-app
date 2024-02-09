@@ -5,15 +5,72 @@
 		     xmlns:local="clr-namespace:ShopAdminApp"
 			 x:Class="ShopAdminApp.DashboardPage"
 			 Title="Dashboard">
-	<ContentPage.Content>
-		<StackLayout>
-			<Label Text="Daily Orders" HorizontalOptions="Center" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-			<microcharts:ChartView HeightRequest="250" x:Name="lineChartView" Chart="{Binding Chart}"/>
-			<Label Text="Top Categories" HorizontalOptions="Center" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-			<microcharts:ChartView HeightRequest="250" x:Name="donutChartView" Chart="{Binding Chart}"/>
-			<Label Text="Top Products" HorizontalOptions="Center" FontSize="14" FontAttributes="Bold" TextColor="Black"/>
-			<microcharts:ChartView HeightRequest="250" x:Name="barChartView" Chart="{Binding Chart}"/>
-		</StackLayout>
-	</ContentPage.Content>
+    <ScrollView>
+		<StackLayout Padding="10,10,10,10">
+            <Frame HasShadow="True"
+                    Padding="8">
+                <StackLayout>
+                <Label Text="Active Orders"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Label Text="50"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+		    <Frame HasShadow="True"
+                    Padding="8">
+                <StackLayout>
+                <Label Text="Delivered Orders"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Label Text="50"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame HasShadow="True"
+                    Padding="8">
+                <StackLayout>
+                <Label Text="Daily Orders"
+			           HorizontalOptions="Center"
+			           FontSize="14"
+			           FontAttributes="Bold"
+			           TextColor="Black"/>
+			    <microcharts:ChartView HeightRequest="250" x:Name="lineChartView" Chart="{Binding Chart}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame HasShadow="True"
+                   Padding="8">
+                <StackLayout>
+			    <Label Text="Top Categories"
+                       HorizontalOptions="Center"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+			    <microcharts:ChartView HeightRequest="250" x:Name="donutChartView" Chart="{Binding Chart}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame HasShadow="True"
+                   Padding="8">
+                <StackLayout>
+			    <Label Text="Top Products"
+                       HorizontalOptions="Center"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+			    <microcharts:ChartView HeightRequest="250" x:Name="barChartView" Chart="{Binding Chart}"/>
+                </StackLayout>
+            </Frame>
+	    </StackLayout>
+    </ScrollView>
 </ContentPage>
 
