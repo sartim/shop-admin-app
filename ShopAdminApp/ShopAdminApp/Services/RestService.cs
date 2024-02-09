@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Newtonsoft.Json;
+using ShopAdminApp.Models;
 
 namespace ShopAdminApp.Services
 {
@@ -36,6 +38,16 @@ namespace ShopAdminApp.Services
             }
             Console.WriteLine(response);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<Product> ListProducts()
+        {
+            HttpResponseMessage response = await client.GetAsync("api/v1/products");
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            Product product = JsonConvert.DeserializeObject<Product>(jsonResponse);
+            Console.WriteLine($"{jsonResponse}\n");
+
+            return product;
         }
     }
 }
