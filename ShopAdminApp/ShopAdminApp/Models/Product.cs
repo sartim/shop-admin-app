@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace ShopAdminApp.Models
 {
-	public class Product
+    public class Product
 	{
         public string count { get; set; }
 
@@ -19,7 +20,7 @@ namespace ShopAdminApp.Models
     {
         public string name { get; set; }
 
-        public string count { get; set; }
+        //public CategoryDetail category { get; set; }
 
         public string brand { get; set; }
 
