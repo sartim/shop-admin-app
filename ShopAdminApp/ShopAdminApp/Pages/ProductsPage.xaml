@@ -5,39 +5,40 @@
              xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
 			 x:Class="ShopAdminApp.ProductsPage"
 			 Title="Product">
-    <ContentPage.Content>
-		<StackLayout>
+     <Grid>  
+        <Grid>  
+            <Grid.RowDefinitions>  
+                <RowDefinition Height="Auto"/>  
+                <RowDefinition Height="*"/>  
+            </Grid.RowDefinitions> 
             <SearchBar Placeholder="Search" />
-	        <ListView>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemsSource>
-                    <col:ArrayList>
-                        <models:Product Name="Apple"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                        <models:Product Name="Orange"/>
-                    </col:ArrayList>
-                </ListView.ItemsSource>
-            </ListView>
-          </StackLayout>
-    </ContentPage.Content>
+            <ListView
+                x:Name="listviewProducts"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                HasUnevenRows="True">  
+                <ListView.ItemTemplate>  
+                    <DataTemplate>  
+                        <ViewCell>  
+                            <Grid HorizontalOptions="FillAndExpand" Padding="10">  
+                                <Grid.RowDefinitions>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                </Grid.RowDefinitions>  
+                                <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" Grid.Row="0" TextColor="Black"  FontAttributes="Bold"/>  
+                                <Label Text="{Binding brand}" HorizontalOptions="StartAndExpand" Grid.Row="1" TextColor="Black"  FontAttributes="Bold"/>  
+                                <Label Text="{Binding price}" HorizontalOptions="StartAndExpand" Grid.Row="2" TextColor="Gray"  FontAttributes="Bold"/>  
+  
+                                <BoxView HeightRequest="2" Margin="0,10,10,0" BackgroundColor="Gray" Grid.Row="3" HorizontalOptions="FillAndExpand" />  
+                            </Grid>  
+                        </ViewCell>  
+  
+                    </DataTemplate>  
+                </ListView.ItemTemplate>  
+            </ListView>  
+        </Grid>  
+        <ActivityIndicator x:Name="ProgressLoader" IsRunning="True"/>
+    </Grid>  
 </ContentPage>
