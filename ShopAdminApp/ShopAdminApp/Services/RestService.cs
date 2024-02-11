@@ -9,8 +9,8 @@ using ShopAdminApp.Models;
 
 namespace ShopAdminApp.Services
 {
-	public class RestService
-	{
+    public class RestService
+    {
         HttpClient client;
 
         public RestService()
@@ -36,18 +36,23 @@ namespace ShopAdminApp.Services
                 Console.Write(ex);
                 Console.WriteLine("Possible that device doesn't support secure storage on device.");
             }
-            Console.WriteLine(response);
+
             return response.IsSuccessStatusCode;
         }
 
         public async Task<Product> ListProducts()
         {
             HttpResponseMessage response = await client.GetAsync("api/v1/products");
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            Product product = JsonConvert.DeserializeObject<Product>(jsonResponse);
-            Console.WriteLine($"{jsonResponse}\n");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                Product product = JsonConvert.DeserializeObject<Product>(jsonResponse);
 
-            return product;
+                return product;
+
+            }
+
+            return null;
         }
     }
 }
