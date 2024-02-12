@@ -27,16 +27,19 @@ namespace ShopAdminApp.Services
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 
             HttpResponseMessage response = await client.PostAsync("api/v1/auth/generate-jwt", content);
-            try
+            if (response.IsSuccessStatusCode)
             {
-                await SecureStorage.SetAsync("jwt", response.ToString());
+                try
+                {
+                    await SecureStorage.SetAsync("jwt", response.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex);
+                    Console.WriteLine("Possible that device doesn't support secure storage on device.");
+                }
             }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-                Console.WriteLine("Possible that device doesn't support secure storage on device.");
-            }
-
+           
             return response.IsSuccessStatusCode;
         }
 
@@ -47,7 +50,7 @@ namespace ShopAdminApp.Services
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 Product product = JsonConvert.DeserializeObject<Product>(jsonResponse);
-
+                Console.WriteLine(jsonResponse);
                 return product;
 
             }
