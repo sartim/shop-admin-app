@@ -20,6 +20,8 @@ namespace ShopAdminApp.Models
     {
         public string name { get; set; }
 
+        public string image_urls { get; set; }
+
         //public CategoryDetail category { get; set; }
 
         public string brand { get; set; }
