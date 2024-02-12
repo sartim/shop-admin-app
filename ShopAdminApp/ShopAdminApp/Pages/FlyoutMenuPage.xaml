@@ -7,14 +7,19 @@
              IconImageSource="hamburger.png"
              Title="Shop Admin">
     <StackLayout>
-        <ListView x:Name="listView" x:FieldModifier="public">
+        <Image Source="default_user.png" />
+
+        <ListView x:Name="listView" x:FieldModifier="public" Margin="20,20,0,0">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:FlyoutPageItem}">
                     <local:FlyoutPageItem Title="Dashboard" IconSource="dashboard.png" TargetType="{x:Type local:DashboardPage}" />
-                    <local:FlyoutPageItem Title="Orders" IconSource="orders.png" TargetType="{x:Type local:OrdersPage}" />
-                    <local:FlyoutPageItem Title="Products" IconSource="products.png" TargetType="{x:Type local:ProductsPage}" />
-                    <local:FlyoutPageItem Title="Users" IconSource="users.png" TargetType="{x:Type local:UsersPage}" />
+                    <local:FlyoutPageItem Title="Order" IconSource="order.png" TargetType="{x:Type local:OrdersPage}" />
+                    <local:FlyoutPageItem Title="Product" IconSource="product.png" TargetType="{x:Type local:ProductsPage}" />
+                    <local:FlyoutPageItem Title="Category" IconSource="category.png" TargetType="{x:Type local:CategoryPage}" />
+                    <local:FlyoutPageItem Title="Status" IconSource="status.png" TargetType="{x:Type local:StatusPage}" />
+                    <local:FlyoutPageItem Title="User" IconSource="users.png" TargetType="{x:Type local:UsersPage}" />
                     <local:FlyoutPageItem Title="Settings" IconSource="settings.png" TargetType="{x:Type local:SettingsPage}" />
+                    <local:FlyoutPageItem Title="Logout" IconSource="logout.png" TargetType="{x:Type local:LogoutPage}" />
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>

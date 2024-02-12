@@ -3,12 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopAdminApp.LoginPage"
              NavigationPage.HasNavigationBar="false"
-             BackgroundColor="DeepSkyBlue">
+             NavigationPage.HasBackButton="false"
+             BackgroundColor="#0098e1">
     <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
-        <Entry Placeholder="Email" x:Name="EmailEntry" Keyboard="Email" />
-        <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry" />
-        <Button Text="Login" Clicked="OnLoginButtonClicked" BackgroundColor="White" TextColor="DeepSkyBlue" Margin="0,10,0,0" />
-        <Label Text="{Binding LoginMessage}" TextColor="Red" />
+        <Frame HasShadow="True"
+               CornerRadius="5"
+               Margin="30,30,30,30"
+               Padding="8">
+                <StackLayout Padding="20">
+                    <Label Text="LOGIN"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <Image Source="login_logo.png" />
+                    <Label Text="{Binding Message}" IsVisible="False" TextColor="Red"/>
+                    <FlexLayout FlexLayout.Grow="1">
+                        <Image Source="user.png" />
+                        <Entry Placeholder="Email" x:Name="EmailEntry" Keyboard="Email"  FlexLayout.Grow="1" />
+                        <Label x:Name="LoginModel_UsernameError" IsVisible="False" TextColor="Red" />
+                    </FlexLayout>
+
+                    <FlexLayout FlexLayout.Grow="1">
+                        <Image Source="password.png" />
+                        <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry" FlexLayout.Grow="1" />
+                        <Label x:Name="LoginModel_PasswordError" IsVisible="False" TextColor="Red" />
+                    </FlexLayout>
+
+                    <Button Text="Login" Clicked="OnLoginButtonClicked" BackgroundColor="#0098e1" TextColor="#FFF" Margin="0,10,0,0" />
+                    <Label Text="{Binding LoginMessage}" TextColor="Red" />
+                </StackLayout>
+            </Frame>
     </StackLayout>
 </ContentPage>
 

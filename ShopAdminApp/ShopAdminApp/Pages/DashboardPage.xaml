@@ -29,21 +29,21 @@
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
-                <Label Text="50"
+                <Label Text="100"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 </StackLayout>
             </Frame>
 
             <Frame HasShadow="True"
-                    Padding="8">
+                   Padding="0">
                 <StackLayout>
                 <Label Text="Daily Orders"
 			           HorizontalOptions="Center"
 			           FontSize="14"
 			           FontAttributes="Bold"
 			           TextColor="Black"/>
-			    <microcharts:ChartView HeightRequest="250" x:Name="lineChartView" Chart="{Binding Chart}"/>
+			    <microcharts:ChartView  HeightRequest="250" x:Name="lineChartView" Chart="{Binding Chart}"/>
                 </StackLayout>
             </Frame>
 
