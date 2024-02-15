@@ -12,7 +12,8 @@
                 <RowDefinition Height="*"/>  
             </Grid.RowDefinitions>
             <Frame HeightRequest="20">
-                <SearchBar Placeholder="Search" />
+                <Entry IsReadOnly="True" />
+                <!--<SearchBar Placeholder="Search" />-->
             </Frame>
             
             <ListView
