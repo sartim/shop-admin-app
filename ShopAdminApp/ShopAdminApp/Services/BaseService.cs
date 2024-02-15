@@ -16,9 +16,14 @@ namespace ShopAdminApp.Services
             _client.BaseAddress = new Uri("https://flask-shop-api.vercel.app/");
         }
 
-        protected async Task<T> SendRequestAsync<T>(HttpMethod method, string url, object data = null)
+        protected async Task<T> SendRequestAsync<T>(HttpMethod method, string url, object data = null, string authToken = null)
         {
             HttpRequestMessage request = new HttpRequestMessage(method, url);
+
+            if (!string.IsNullOrEmpty(authToken))
+            {
+                _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", authToken);
+            }
 
             if (data != null)
             {
