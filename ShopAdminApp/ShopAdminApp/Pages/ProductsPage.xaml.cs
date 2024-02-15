@@ -10,12 +10,12 @@ namespace ShopAdminApp
 {
 	public partial class ProductsPage : ContentPage
 	{
-        private RestService restService;
+        private readonly ProductService _productService;
 
         public ProductsPage()
         {
 			InitializeComponent();
-            restService = new RestService();
+            _productService = new ProductService();
             GetProducts();
         }
 
@@ -24,7 +24,7 @@ namespace ShopAdminApp
             //Check network status   
             if (NetworkCheck.IsInternet())
             {
-                var products = await restService.ListProducts();
+                var products = await _productService.GetAsync<Product>("api/v1/products");
 
                 //Binding listview with server response    
                 listviewProducts.ItemsSource = products.results;

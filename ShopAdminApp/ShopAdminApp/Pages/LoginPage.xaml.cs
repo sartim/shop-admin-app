@@ -7,15 +7,14 @@ namespace ShopAdminApp
 {
     public partial class LoginPage : ContentPage
     {
-        private string LoginMessage;
-        private RestService restService;
+        private readonly AuthService _authService;
 
         public LoginPage()
         {
             InitializeComponent();
 
             CheckForJwtAsync();
-            restService = new RestService();
+            _authService = new AuthService();
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
@@ -23,7 +22,7 @@ namespace ShopAdminApp
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
 
-            bool isAuthenticated = await restService.Authenticate(email, password);
+            bool isAuthenticated = await _authService.Authenticate(email, password);
 
             if (isAuthenticated)
             {
@@ -33,7 +32,6 @@ namespace ShopAdminApp
             else
             {
                 await DisplayAlert("Invalid credentials", "Please try again", "OK");
-                LoginMessage = "Invalid credentials. Please try again.";
             }
         }
 
