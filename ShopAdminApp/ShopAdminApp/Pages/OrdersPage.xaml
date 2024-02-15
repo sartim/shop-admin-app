@@ -5,39 +5,50 @@
              xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
 			 x:Class="ShopAdminApp.OrdersPage"
 			 Title="Orders">
-	<ContentPage.Content>
-		<StackLayout>
-            <SearchBar Placeholder="Search" />
-	        <ListView>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding ID}" />
-                    </DataTemplate>
+     <Grid>  
+        <Grid>  
+            <Grid.RowDefinitions>  
+                <RowDefinition Height="Auto"/>  
+                <RowDefinition Height="*"/>  
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="20">
+                <Entry IsReadOnly="True" />
+                <!--<SearchBar Placeholder="Search" />-->
+            </Frame>
+            
+            <ListView
+                x:Name="listviewOrders"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>  
+                    <DataTemplate>  
+                        <ViewCell>  
+                            <Grid HorizontalOptions="FillAndExpand" Padding="10">  
+                                <Grid.RowDefinitions>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/>  
+                                </Grid.RowDefinitions>
+
+                                <Frame Grid.Row="0" Margin="0,0,0,-10" HasShadow="False">
+                                    <Label Text="{Binding id}" HorizontalOptions="StartAndExpand" TextColor="Black"  FontAttributes="Bold"/>  
+                                </Frame>
+                                <Frame Grid.Row="1" Margin="0,0,0,20" HasShadow="False">
+                                    <Label Text="{Binding order_total}" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>  
+                                </Frame>
+                            </Grid>  
+                        </ViewCell>  
+                    </DataTemplate>  
                 </ListView.ItemTemplate>
-                <ListView.ItemsSource>
-                    <col:ArrayList>
-                        <models:Order ID="#131411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                        <models:Order ID="#151411"/>
-                    </col:ArrayList>
-                </ListView.ItemsSource>
-            </ListView>
-          </StackLayout>
-    </ContentPage.Content>
+
+            </ListView>  
+        </Grid>  
+        <ActivityIndicator x:Name="ProgressLoader" Color="#0098e1" IsRunning="True">
+          <ActivityIndicator.Scale>
+            <OnPlatform x:TypeArguments="x:Double" iOS="1.0" Android="0.2" />
+          </ActivityIndicator.Scale>
+        </ActivityIndicator> 
+    </Grid>  
 </ContentPage>
