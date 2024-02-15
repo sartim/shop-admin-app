@@ -35,7 +35,8 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-<RunCodeAnalysis>false</RunCodeAnalysis>  </PropertyGroup>
+<RunCodeAnalysis>false</RunCodeAnalysis>  <AndroidLinkTool>r8</AndroidLinkTool>
+</PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
