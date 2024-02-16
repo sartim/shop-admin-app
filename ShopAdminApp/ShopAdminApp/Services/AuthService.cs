@@ -13,12 +13,16 @@ namespace ShopAdminApp.Services
             var json = $"{{\"email\": \"{email}\", \"password\": \"{password}\"}}";
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+
             HttpResponseMessage response = await _client.PostAsync("api/v1/auth/generate-jwt", content);
+
             if (response.IsSuccessStatusCode)
             {
                 try
                 {
-                    await SecureStorage.SetAsync("jwt", response.ToString());
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    await SecureStorage.SetAsync("jwt", jsonResponse);
                 }
                 catch (Exception ex)
                 {

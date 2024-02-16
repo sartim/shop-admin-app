@@ -7,34 +7,44 @@
 			 Title="Dashboard">
     <ScrollView>
 		<StackLayout Padding="10,10,10,10">
-            <Frame HasShadow="True"
-                    Padding="8">
-                <StackLayout>
-                <Label Text="Active Orders"
-                       FontSize="Medium"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-                <Label Text="50"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-                </StackLayout>
-            </Frame>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame HasShadow="True"
+                       Padding="8"
+                       Grid.Column="0">
+                    <StackLayout>
+                    <Label Text="Active Orders"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <Label Text="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
 
-		    <Frame HasShadow="True"
-                    Padding="8">
-                <StackLayout>
-                <Label Text="Delivered Orders"
-                       FontSize="Medium"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-                <Label Text="100"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
-                </StackLayout>
-            </Frame>
-
+		        <Frame HasShadow="True"
+                       Padding="8"
+                       Grid.Column="1">
+                    <StackLayout>
+                    <Label Text="Delivered Orders"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    <Label Text="100"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            
             <Frame HasShadow="True"
                    Padding="0">
                 <StackLayout>

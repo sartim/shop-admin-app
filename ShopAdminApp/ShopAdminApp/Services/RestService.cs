@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using static CoreFoundation.DispatchSource;
 
 namespace ShopAdminApp.Services
 {
@@ -9,7 +8,7 @@ namespace ShopAdminApp.Services
     {
         public async Task<T> GetAsync<T>(string url, string authToken)
         {
-            return await SendRequestAsync<T>(HttpMethod.Get, url, authToken);
+            return await SendRequestAsync<T>(HttpMethod.Get, url, null, authToken);
         }
 
         public async Task<T> PostAsync<T>(string url, object data, string authToken)

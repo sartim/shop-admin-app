@@ -4,41 +4,71 @@
 			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
              xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
 			 x:Class="ShopAdminApp.UsersPage"
-			 Title="Users">
-	<ContentPage.Content>
-		<StackLayout>
-            <SearchBar Placeholder="Search" />
-	        <ListView>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
-                    </DataTemplate>
+			 Title="User">
+     <Grid>  
+        <Grid>  
+            <Grid.RowDefinitions>  
+                <RowDefinition Height="Auto"/>  
+                <RowDefinition Height="*"/>  
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Frame HeightRequest="20">
+                    <SearchBar Placeholder="Search" />
+                </Frame>
+
+                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Margin="20,10,0,-20" Text="First Name" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" TextColor="#0098e1" />
+                    <Label Grid.Column="1" Grid.Row="0" Margin="20,10,0,-20" Text="Last Name" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" TextColor="#0098e1" />
+                    <Label Grid.Column="2" Grid.Row="0" Margin="20,10,0,-20" Text="Email" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" TextColor="#0098e1" />
+                    <Label Grid.Column="3" Grid.Row="0" Margin="20,10,0,-20" Text="Created Date" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" TextColor="#0098e1" />
+                </Grid>
+            </StackLayout>
+            
+            <ListView
+                x:Name="listviewUsers"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>  
+                    <DataTemplate>  
+                        <ViewCell>  
+                            <Grid HorizontalOptions="FillAndExpand">  
+                                <Grid.RowDefinitions>  
+                                    <RowDefinition Height="Auto"/> 
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Column="0" Margin="20,10,0,-20" Text="{Binding first_name}" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" />
+                                        <Label Grid.Column="1" Margin="20,10,0,-20" Text="{Binding first_name}" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" />
+                                        <Label Grid.Column="2" Margin="20,10,0,-20" Text="{Binding email}" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" />
+                                        <Label Grid.Column="3" Margin="20,10,0,-20" Text="{Binding created_at}" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" />
+                                    </Grid>
+                                </StackLayout>
+                            </Grid>  
+                        </ViewCell>  
+                    </DataTemplate>  
                 </ListView.ItemTemplate>
-                <ListView.ItemsSource>
-                    <col:ArrayList>
-                        <models:User Name="John Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                        <models:User Name="Jane Doe"/>
-                    </col:ArrayList>
-                </ListView.ItemsSource>
-            </ListView>
-          </StackLayout>
-    </ContentPage.Content>
+            </ListView>  
+        </Grid>  
+        <ActivityIndicator x:Name="ProgressLoader" Color="#0098e1" IsRunning="True">
+          <ActivityIndicator.Scale>
+            <OnPlatform x:TypeArguments="x:Double" iOS="1.0" Android="0.2" />
+          </ActivityIndicator.Scale>
+        </ActivityIndicator> 
+    </Grid>  
 </ContentPage>

@@ -1,34 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ShopAdminApp.StatusPage">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-            
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    
-    <!--<ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>-->
-    
-  </ListView>
-</ContentPage>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
+			 x:Class="ShopAdminApp.StatusPage"
+			 Title="Status">
+     <Grid>  
+        <Grid>  
+            <Grid.RowDefinitions>  
+                <RowDefinition Height="Auto"/>  
+                <RowDefinition Height="*"/>  
+            </Grid.RowDefinitions>
 
+            <Frame HeightRequest="20">
+                <SearchBar Placeholder="Search" />
+            </Frame>
+
+            <ListView
+                x:Name="listviewStatuses"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>  
+                    <DataTemplate>  
+                        <ViewCell>  
+                            <Grid HorizontalOptions="FillAndExpand">  
+                                <Grid.RowDefinitions>  
+                                    <RowDefinition Height="Auto"/> 
+                                </Grid.RowDefinitions>
+                                <Label Margin="20,10,0,-20" Text="{Binding name}" HeightRequest="50" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro" />
+                            </Grid>  
+                        </ViewCell>  
+                    </DataTemplate>  
+                </ListView.ItemTemplate>
+            </ListView>  
+        </Grid>  
+        <ActivityIndicator x:Name="ProgressLoader" Color="#0098e1" IsRunning="True">
+          <ActivityIndicator.Scale>
+            <OnPlatform x:TypeArguments="x:Double" iOS="1.0" Android="0.2" />
+          </ActivityIndicator.Scale>
+        </ActivityIndicator> 
+    </Grid>  
+</ContentPage>

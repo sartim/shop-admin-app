@@ -3,19 +3,50 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
              xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
+             xmlns:converters="clr-namespace:ShopAdminApp.Converters"
 			 x:Class="ShopAdminApp.OrdersPage"
 			 Title="Orders">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StatusColorConverter x:Key="StatusColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
      <Grid>  
         <Grid>  
             <Grid.RowDefinitions>  
                 <RowDefinition Height="Auto"/>  
                 <RowDefinition Height="*"/>  
             </Grid.RowDefinitions>
-            <Frame HeightRequest="20">
-                <Entry IsReadOnly="True" />
-                <!--<SearchBar Placeholder="Search" />-->
-            </Frame>
             
+            <StackLayout>
+                <Frame HeightRequest="20" Grid.Row="0">
+                    <SearchBar Placeholder="Search" />
+                </Frame>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Column="0">
+                        <StackLayout>
+                            <Label Text="Pending" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>
+                            <Label Text="0" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/> 
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1">
+                        <StackLayout>
+                            <Label Text="Delivered" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>
+                            <Label Text="20" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/> 
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                
+            </StackLayout>
+
             <ListView
                 x:Name="listviewOrders"
                 Grid.Row="1"
@@ -24,25 +55,49 @@
                 <ListView.ItemTemplate>  
                     <DataTemplate>  
                         <ViewCell>  
-                            <Grid HorizontalOptions="FillAndExpand" Padding="10">  
+                            <Grid HorizontalOptions="FillAndExpand">  
                                 <Grid.RowDefinitions>  
-                                    <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
+                                    <RowDefinition Height="Auto"/> 
                                 </Grid.RowDefinitions>
-
                                 <Frame Grid.Row="0" Margin="0,0,0,-10" HasShadow="False">
-                                    <Label Text="{Binding id}" HorizontalOptions="StartAndExpand" TextColor="Black"  FontAttributes="Bold"/>  
-                                </Frame>
-                                <Frame Grid.Row="1" Margin="0,0,0,20" HasShadow="False">
-                                    <Label Text="{Binding order_total}" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>  
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <StackLayout>
+                                                <FlexLayout Grid.Column="0">
+                                                    <Label Text="#" HorizontalOptions="StartAndExpand" TextColor="Black" FontAttributes="Bold"/>
+                                                    <Label Text="{Binding id}" HorizontalOptions="StartAndExpand" TextColor="Black" FontAttributes="Bold"/>
+                                                </FlexLayout>
+                                                <Label Text="{Binding created_at}" HorizontalOptions="StartAndExpand" TextColor="Gray" FontAttributes="Bold"/> 
+                                            </StackLayout>
+
+                                            <Frame CornerRadius="30"
+                                                   IsClippedToBounds="True"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"
+                                                   Padding="5"
+                                                   HasShadow="True"
+                                                   Grid.Column="1">
+                                                <Label Text="{Binding status.name}" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="Micro">
+                                                    <Label.TextColor>
+                                                        <Binding Path="status.name" Converter="{StaticResource StatusColorConverter}" />
+                                                    </Label.TextColor>
+                                                 </Label>
+                                            </Frame>
+                                        </Grid>
+ 
+                                        
+                                    </StackLayout>
                                 </Frame>
                             </Grid>  
                         </ViewCell>  
                     </DataTemplate>  
                 </ListView.ItemTemplate>
-
             </ListView>  
         </Grid>  
         <ActivityIndicator x:Name="ProgressLoader" Color="#0098e1" IsRunning="True">

@@ -52,7 +52,7 @@ namespace ShopAdminApp
                 await DisplayAlert("Error", ex.Message, "OK");
                 Console.WriteLine($"Error: {ex.Message}");
                 // Navigate to the login page
-                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                await Navigation.PushAsync(new LoginPage());
             }
         }
     }

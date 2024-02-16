@@ -1,44 +1,55 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
+using ShopAdminApp.Models;
+using ShopAdminApp.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ShopAdminApp
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StatusPage : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
+        private readonly RestService _restService;
 
-        public StatusPage ()
+        public StatusPage()
         {
             InitializeComponent();
-
-            Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-			
-			// MyListView.ItemsSource = Items;
+            _restService = new RestService();
+            GetStatus();
         }
 
-        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        public async void GetStatus()
         {
-            if (e.Item == null)
-                return;
+            try
+            {
+                if (NetworkCheck.IsInternet())
+                {
+                    string storedAuthResponse = await SecureStorage.GetAsync("jwt");
+                    AuthResponse authResponse = JsonConvert.DeserializeObject<AuthResponse>(storedAuthResponse);
+                    string token = authResponse.access_token;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+                    // Offload the network request to a background thread
+                    var statuses = await Task.Run(() => _restService.GetAsync<Status>("api/v1/statuses", token));
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+                    // Update the UI on the main thread
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        //Binding listview with server response    
+                        listviewStatuses.ItemsSource = statuses.results;
+                    });
+                }
+                else
+                {
+                    await DisplayAlert("JSONParsing", "No network is available.", "Ok");
+                }
+                ProgressLoader.IsVisible = false;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to load statuses: {ex.Message}", "OK");
+                ProgressLoader.IsVisible = false;
+            }
         }
     }
 }

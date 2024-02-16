@@ -12,8 +12,7 @@
                 <RowDefinition Height="*"/>  
             </Grid.RowDefinitions>
             <Frame HeightRequest="20">
-                <Entry IsReadOnly="True" />
-                <!--<SearchBar Placeholder="Search" />-->
+                <SearchBar Placeholder="Search" />
             </Frame>
             
             <ListView
@@ -24,28 +23,45 @@
                 <ListView.ItemTemplate>  
                     <DataTemplate>  
                         <ViewCell>  
-                            <Grid HorizontalOptions="FillAndExpand" Padding="10">  
+                            <Grid HorizontalOptions="FillAndExpand">  
                                 <Grid.RowDefinitions>  
                                     <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
-                                    <RowDefinition Height="Auto"/>  
                                 </Grid.RowDefinitions>
-                                <Frame Margin="0,0,0,-10"
-                                       HasShadow="False">
-                                    <Image Source="{Binding image_urls}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="250"
-                                       WidthRequest="100"
-                                       Grid.Row="0"/>
-                                </Frame>
-                                <BoxView HeightRequest="2" Margin="0,10,10,-15" BackgroundColor="Gray" Grid.Row="1" HorizontalOptions="FillAndExpand" />  
-                                <Frame Grid.Row="2" Margin="0,0,0,-10" HasShadow="False">
-                                    <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" TextColor="Black"  FontAttributes="Bold"/>  
-                                </Frame>
-                                <Frame Grid.Row="3" Margin="0,0,0,20" HasShadow="False">
-                                    <Label Text="{Binding brand}" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>  
-                                </Frame>
+
+                                <StackLayout Grid.Row="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Frame Margin="10"
+                                                   CornerRadius="0"
+                                                   HeightRequest="50"
+                                                   WidthRequest="50"
+                                                   IsClippedToBounds="True"
+                                                   HasShadow="True"
+                                                   Grid.Column="0">
+                                              <Image Source="{Binding image_urls}"
+                                                     Aspect="AspectFill"
+                                                     Margin="-20" />
+                                            </Frame>
+
+                                            <StackLayout Grid.Column="1">
+                                                <Label />
+                                                <Label Text="{Binding name}" HorizontalOptions="StartAndExpand" TextColor="Black"  FontAttributes="Bold"/>
+                                                <Label Text="{Binding brand}" HorizontalOptions="StartAndExpand" TextColor="Gray"  FontAttributes="Bold"/>
+                                                <Label />
+                                            </StackLayout>
+                                            
+
+                                        </Grid>
+                                        
+                                        
+                          
+                                    </StackLayout>
                             </Grid>  
                         </ViewCell>  
                     </DataTemplate>  

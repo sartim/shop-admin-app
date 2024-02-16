@@ -26,10 +26,8 @@ namespace ShopAdminApp
             { 
                 if (NetworkCheck.IsInternet())
                 {
-                    string authToken = await SecureStorage.GetAsync("jwt");
-
                     // Offload the network request to a background thread
-                    var products = await Task.Run(() => _restService.GetAsync<Product>("api/v1/products", authToken));
+                    var products = await Task.Run(() => _restService.GetAsync<Product>("api/v1/products", null));
 
                     // Update the UI on the main thread
                     Device.BeginInvokeOnMainThread(() =>

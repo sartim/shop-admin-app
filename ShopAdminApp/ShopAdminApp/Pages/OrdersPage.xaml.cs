@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ShopAdminApp.Models;
 using ShopAdminApp.Services;
 using Xamarin.Essentials;
@@ -14,6 +15,7 @@ namespace ShopAdminApp
         public OrdersPage()
         {
             InitializeComponent();
+            _restService = new RestService();
             GetOrders();
         }
 
@@ -23,11 +25,13 @@ namespace ShopAdminApp
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    string authToken = await SecureStorage.GetAsync("jwt");
+                    string storedAuthResponse = await SecureStorage.GetAsync("jwt");
+                    AuthResponse authResponse = JsonConvert.DeserializeObject<AuthResponse>(storedAuthResponse);
+                    string token = authResponse.access_token;
 
                     // Offload the network request to a background thread
-                    var orders = await Task.Run(() => _restService.GetAsync<Order>("api/v1/orders", authToken));
-
+                    var orders = await Task.Run(() => _restService.GetAsync<Order>("api/v1/orders", token));
+                   
                     // Update the UI on the main thread
                     Device.BeginInvokeOnMainThread(() =>
                     {
