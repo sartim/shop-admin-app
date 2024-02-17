@@ -12,6 +12,7 @@ namespace ShopAdminApp
         public LoginPage()
         {
             InitializeComponent();
+            ProgressLoader.IsVisible = false;
 
             CheckForJwtAsync();
             _authService = new AuthService();
@@ -19,6 +20,8 @@ namespace ShopAdminApp
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
+            ProgressLoader.IsVisible = true;
+
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
 
@@ -32,6 +35,7 @@ namespace ShopAdminApp
             else
             {
                 await DisplayAlert("Invalid credentials", "Please try again", "OK");
+                ProgressLoader.IsVisible = false;
             }
         }
 

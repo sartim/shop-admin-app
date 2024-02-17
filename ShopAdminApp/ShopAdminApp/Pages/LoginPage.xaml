@@ -6,6 +6,12 @@
              NavigationPage.HasBackButton="false"
              BackgroundColor="#0098e1">
     <StackLayout VerticalOptions="CenterAndExpand" Padding="20">
+        <ActivityIndicator x:Name="ProgressLoader" Color="#FFF" IsRunning="True">
+          <ActivityIndicator.Scale>
+            <OnPlatform x:TypeArguments="x:Double" iOS="1.0" Android="0.2" />
+          </ActivityIndicator.Scale>
+        </ActivityIndicator>
+
         <Frame HasShadow="True"
                CornerRadius="5"
                Margin="30,30,30,30"
