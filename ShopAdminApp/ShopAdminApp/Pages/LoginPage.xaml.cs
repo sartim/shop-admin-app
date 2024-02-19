@@ -12,7 +12,8 @@ namespace ShopAdminApp
         public LoginPage()
         {
             InitializeComponent();
-            ProgressLoader.IsVisible = false;
+            EmailEntryLabel.IsVisible = false;
+            PasswordEntryLabel.IsVisible = false;
 
             CheckForJwtAsync();
             _authService = new AuthService();
@@ -20,23 +21,39 @@ namespace ShopAdminApp
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            ProgressLoader.IsVisible = true;
+            EmailEntryLabel.IsVisible = false;
+            PasswordEntryLabel.IsVisible = false;
 
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
 
-            bool isAuthenticated = await _authService.Authenticate(email, password);
+            if (email == null)
+            {
+                EmailEntryLabel.IsVisible = true;
+            }
 
-            if (isAuthenticated)
+            if (password == null)
             {
-                // Navigate to the home page upon successful login
-                await Navigation.PushAsync(new HomePage());
+                PasswordEntryLabel.IsVisible = true;
             }
-            else
+
+            if (email != null && password != null)
             {
-                await DisplayAlert("Invalid credentials", "Please try again", "OK");
-                ProgressLoader.IsVisible = false;
+                bool isAuthenticated = await _authService.Authenticate(email, password);
+
+                if (isAuthenticated)
+                {
+                    // Navigate to the home page upon successful login
+                    await Navigation.PushAsync(new HomePage());
+                }
+                else
+                {
+                    await DisplayAlert("Invalid credentials", "Please try again", "OK");
+                }
             }
+            
+
+            ProgressLoader.IsVisible = false;
         }
 
         async void CheckForJwtAsync()
