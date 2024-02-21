@@ -4,17 +4,16 @@
 			 xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
              xmlns:models="clr-namespace:ShopAdminApp.Models;assembly=ShopAdminApp"
 			 x:Class="ShopAdminApp.SettingsPage"
-			 Title="Product">
+			 Title="Settings">
 	<ListView>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}" />
+                <TextCell Text="{Binding Name}" TextColor="Black"/>
             </DataTemplate>
         </ListView.ItemTemplate>
         <ListView.ItemsSource>
             <col:ArrayList>
                 <models:Setting Name="Account" />
-                <models:Setting Name="Notification" />
                 <models:Setting Name="Logout" />
             </col:ArrayList>
         </ListView.ItemsSource>
