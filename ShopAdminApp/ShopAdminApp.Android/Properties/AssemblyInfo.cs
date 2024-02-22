@@ -6,11 +6,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ShopAdminApp.Android")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Shop Admin")]
+[assembly: AssemblyDescription("Shop Admin")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ShopAdminApp.Android")]
+[assembly: AssemblyCompany("Tridim Technologies")]
+[assembly: AssemblyProduct("Shop Admin")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
