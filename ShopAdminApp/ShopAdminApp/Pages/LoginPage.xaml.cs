@@ -12,15 +12,18 @@ namespace ShopAdminApp
         public LoginPage()
         {
             InitializeComponent();
+            ProgressLoader.IsVisible = false;
             EmailEntryLabel.IsVisible = false;
             PasswordEntryLabel.IsVisible = false;
 
             CheckForJwtAsync();
             _authService = new AuthService();
+
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
+            ProgressLoader.IsVisible = true;
             EmailEntryLabel.IsVisible = false;
             PasswordEntryLabel.IsVisible = false;
 

@@ -15,5 +15,7 @@
          which is used to tint widgets -->
     <!--<item name="colorAccent">#000000</item>-->
     <item name="android:colorActivatedHighlight">#000000</item >
+
+    <item name="android:colorBackground">#0098e1</item> 
   </style>
 </resources>

@@ -19,17 +19,12 @@
                Margin="30,30,30,30"
                Padding="8">
                 <StackLayout Padding="20">
-                    <Label Text="LOGIN"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
                     <Image Source="login_logo.png" />
 
                     <StackLayout>
                         <FlexLayout FlexLayout.Grow="1">
                             <Image Source="user.png" />
-                            <Entry Placeholder="Email" x:Name="EmailEntry" Keyboard="Email"  FlexLayout.Grow="1" />
+                            <Entry Placeholder="Email" x:Name="EmailEntry" Keyboard="Email"  FlexLayout.Grow="1" HeightRequest="48" />
                         </FlexLayout>
                         <Label x:Name="EmailEntryLabel"
                                 Text="Invalid email"
@@ -42,7 +37,7 @@
                     <StackLayout>
                         <FlexLayout FlexLayout.Grow="1">
                             <Image Source="password.png" />
-                            <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry" FlexLayout.Grow="1" />
+                            <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry" FlexLayout.Grow="1" HeightRequest="48"/>
                         </FlexLayout>
                          <Label x:Name="PasswordEntryLabel"
                                 Text="Invalid password"
