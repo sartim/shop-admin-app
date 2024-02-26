@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ShopAdminApp;assembly=ShopAdminApp"
              x:Class="ShopAdminApp.FlyoutMenuPage"
              IconImageSource="hamburger.png"
+             BackgroundColor="#FFF"
              Title="Shop Admin">
     <StackLayout>
         <Frame BackgroundColor="#0098e1" HasShadow="True">
