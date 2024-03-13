@@ -1,16 +1,14 @@
 # Shop Amin App
+Cross platform application developed using Xamarin C# for shop admin management.
 
+Features
+* Visualizations 
+* Record management
+* Notifications
 
-Cross platform application developed using Xamarin C# for shop admin. Can be compiled to Android or iOS application
-
-Link to app on google playstore <a href="https://play.google.com/store/apps/details?id=com.demo.shopadminapp">here</a>
-
-###### Login Credentials
-
-username: `demo@mail.com`
-
-password: `demo_pass`
-
+Supports: 
+* Android
+* iOS
 
 ###### Screenshots
 
